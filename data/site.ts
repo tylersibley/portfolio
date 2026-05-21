@@ -1,5 +1,5 @@
 export const site = {
-  url: 'https://portfolio-tylersibley.vercel.app',
+  url: 'https://tylersibley.dev',
   meta: {
     title: 'Tyler Sibley | Cloud & Identity Security Portfolio',
     description:
