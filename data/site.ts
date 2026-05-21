@@ -1,143 +1,125 @@
-/**
- * ============================================
- * PAGE CONTENT DATA
- * ============================================
- * All structured content for pages lives here.
- * Edit these arrays/objects to customize the template content.
- *
- * Replace placeholder images in src/assets/ with your own.
- */
-
 export const site = {
-  url: 'https://example.com',
+  url: 'https://portfolio-tylersibley.vercel.app',
   meta: {
-    title: 'Alex Morgan | Full-stack engineer',
+    title: 'Tyler Sibley | Cloud & Identity Security Portfolio',
     description:
-      'Portfolio example: shipping reliable web products with clear architecture, tests, and delivery practices.',
+      'Portfolio of Tyler Sibley — FSU IT senior and Okta Customer Success Intern specializing in IAM, serverless cloud architecture, and AI-powered security tooling.',
   },
   hero: {
-    name: 'Alex Morgan',
-    role: 'Full-stack engineer',
-    tagline: 'From product intent to production — pragmatic systems, accessible UI, and maintainable code.',
-    contact: 'Open to collaborations and senior IC roles on product-minded teams.',
-    avatarSrc: '/favicon.svg',
-    avatarAlt: 'Alex Morgan',
+    name: 'Tyler Sibley',
+    role: 'IT Student & Okta Customer Success Intern',
+    tagline: 'FSU Senior building in IAM, serverless cloud architecture, and AI-powered security tooling.',
+    contact: 'Okta Customer Success Intern · FSU Information Technology · Targeting Solutions Engineering & Architecture roles.',
+    avatarSrc: '/headshot1.jpg',
+    avatarAlt: 'Tyler Sibley',
   },
   about: {
     paragraphs: [
-      'A brief, compelling introduction about who you are and what you do. Mention your core philosophy, your passion for building digital products, and your drive for creating efficient, high-impact solutions.',
-      'I care about clear boundaries between modules, automated checks in CI, and documentation that helps the next contributor ship safely.',
+      'Senior IT student at Florida State University and current Okta Customer Success Intern. I build real IAM systems with live Okta federation, serverless cloud architectures on AWS, and AI-powered security tooling. I care about systems that are secure by design, not patched after the fact.',
+      'Currently at Okta supporting enterprise customers with SSO, MFA, and lifecycle management implementations. Co-Captain of the FSU AWS Cloud Club. CompTIA Security+, AWS AI Practitioner, and AWS Cloud Practitioner certified.',
       {
-        heading: 'Example focus areas',
+        heading: 'What I work with',
         bullets: [
-          'Designing APIs and client boundaries with typed contracts',
-          'Performance budgets, caching, and pragmatic observability',
-          'Shipping incrementally with feature flags and rollback-friendly deploys',
+          'Identity & Access Management — Okta OIDC/SAML, RBAC, JWT, PKCE, AWS IAM federation',
+          'Cloud architecture — AWS serverless (Lambda, S3, API Gateway, DynamoDB, Cognito, Rekognition)',
+          'Security tooling — Python, OpenAI API, agentic AI pipelines, threat hunting automation',
         ],
-      },
-      {
-        heading: 'Sample stack',
-        techItems: ['TypeScript', 'Astro', 'Tailwind CSS', 'Node', 'Vitest'],
       },
     ],
   },
   experiences: [
     {
-      period: '2025',
-      title: 'Lead Product Designer',
-      company: 'Lumen Studio',
+      period: 'Summer 2026',
+      title: 'Customer Success Intern',
+      company: 'Okta',
       summary:
-        'Built a polished portfolio experience with accessible UI, motion-led interactions, and reusable components.',
-      highlights: [
-        'Designed and shipped the complete website using Astro, Tailwind CSS, and content-driven components',
-        'Crafted consistent responsive layouts and accessible typography across desktop and mobile',
-        'Optimized asset delivery and performance for sub-1s page load metrics',
-      ],
-      tech: ['TypeScript', 'Astro', 'Tailwind CSS', 'Node', 'Vite'],
+        'Supporting enterprise customers implementing Okta identity solutions — SSO, MFA, and lifecycle management.',
+      highlights: [],
+      tech: ['Okta', 'SSO', 'MFA', 'SAML', 'OIDC'],
     },
     {
-      period: '2024',
-      title: 'Frontend Architect',
-      company: 'Nova Launch',
+      period: 'Spring 2026',
+      title: 'DevOps Project Manager',
+      company: 'AWS Cloud Club at FSU — SmartGallery',
       summary:
-        'Delivered a modular marketing site and interactive product showcase for a launch-ready SaaS brand.',
-      highlights: [
-        'Implemented a component-based design system with reusable cards, buttons, and hero sections',
-        'Built content-driven project pages, archive views, and client-side navigation enhancements',
-        'Added cross-browser polish and performance tuning with image optimization and lazy loading',
-      ],
-      tech: ['Astro', 'TypeScript', 'Tailwind CSS', 'Node', 'Vite'],
+        'Led the DevOps team for SmartGallery, a serverless AWS image recognition app built by 35+ contributors over nine weeks.',
+      highlights: [],
+      tech: ['AWS', 'Lambda', 'S3', 'DynamoDB', 'IAM', 'CloudWatch'],
     },
     {
-      period: '2023',
-      title: 'UI Engineer',
-      company: 'Orbital Creative',
+      period: 'Feb. 2026 – Present',
+      title: 'Co-Captain',
+      company: 'AWS Cloud Club at FSU',
       summary:
-        'Created an interactive product showcase with a clean visual system and accessible component library.',
-      highlights: [
-        'Built a flexible project card system for content updates without code changes',
-        'Improved brand consistency with typography, color, and motion guidelines',
-        'Added testing and quality checks for cross-device UI fidelity',
-      ],
-      tech: ['Astro', 'Tailwind CSS', 'JavaScript', 'Node', 'Vitest'],
+        'Co-leading a 65-member organization focused on cloud computing education, AWS certification prep, and career development.',
+      highlights: [],
+      tech: ['AWS', 'IAM', 'Lambda', 'S3'],
     },
   ],
   featuredProjects: [
     {
-      title: 'Lumen Studio Website',
+      title: 'Enterprise IAM Demo — Okta + AWS Federation',
       period: '2025',
-      summary: 'Built a polished portfolio experience with accessible UI, motion-led interactions, and reusable components.',
-      solution: 'Designed a modular component system with Astro and Tailwind CSS, ensuring consistent brand experience across all breakpoints.',
-      impact: 'Achieved sub-1s page load metrics and 95+ Lighthouse scores through optimized asset delivery and lazy loading strategies.',
-      image: 'astro-01.webp',
-      imageAlt: 'Lumen Studio website showcase',
+      link: 'https://tylersibley.github.io/okta-iam-architecture-lab/',
+      github: 'https://github.com/tylersibley/okta-iam-architecture-lab',
+      summary:
+        'A fully deployed enterprise IAM simulation with real Okta SSO, JWT-based role enforcement on a live backend, and actual AWS Console access via SAML federation.',
+      solution:
+        'Built Okta OIDC Authorization Code Flow with PKCE for browser-safe login. After authentication, the app decodes the JWT and reads Okta group claims (App-Admin, App-Engineer, App-Sales) to control what each user sees in the UI. A Node.js/Express backend independently validates the JWT and returns 200 or 403 — enforcing RBAC at the API layer, not just the frontend. Real AWS Console access is granted via Okta SAML federation into an IAM role, which is exactly how enterprises grant cloud access without long-term credentials. Every event — login, API call, access granted/denied, AWS federation — is captured in an audit log.',
+      impact:
+        'Fully live: real Okta login, real JWT validation, real AWS SAML federation. Frontend on GitHub Pages, backend on Render. Demonstrates the full enterprise IAM stack — authentication, authorization, federation, and audit — in a single working demo.',
+      image: 'okta_sso_new.png',
+      imageAlt: 'Enterprise IAM Architecture: Okta + AWS Federation',
       techCategories: [
         {
-          category: 'Frontend',
-          items: ['TypeScript', 'Astro', 'Tailwind CSS', 'Responsive Design'],
+          category: 'Identity & Protocols',
+          items: ['Okta', 'OIDC', 'SAML 2.0', 'OAuth 2.0', 'PKCE', 'JWT', 'RBAC'],
         },
         {
-          category: 'Performance',
-          items: ['Asset Optimization', 'Lazy Loading', 'Image CDN'],
+          category: 'Stack',
+          items: ['JavaScript', 'Node.js', 'Express', 'AWS IAM', 'GitHub Pages', 'Render'],
         },
       ],
     },
     {
-      title: 'Nova Launch Marketing Platform',
-      period: '2024',
-      summary: 'Delivered a modular marketing site and interactive product showcase for a launch-ready SaaS brand.',
-      solution: 'Implemented a content-driven architecture with reusable card components and dynamic project pages, enabling non-technical content updates.',
-      impact: 'Reduced content update time by 80% through intuitive component-based structure; enabled marketing team independence.',
-      image: 'astro-02.jpeg',
-      imageAlt: 'Nova Launch platform interface',
+      title: 'SmartGallery — Serverless AI Image Platform',
+      period: 'Spring 2026',
+      link: 'https://lnkd.in/eH9rAu2A',
+      github: '',
+      summary:
+        'Full-stack serverless AWS application where users upload images and get AI-generated tags automatically — built across 9 weeks with 35+ contributors in the FSU AWS Cloud Club.',
+      solution:
+        'Served as DevOps Project Manager leading a team of 5. Designed the AWS architecture end-to-end: S3 for storage, Lambda for compute, API Gateway for routing, Cognito for auth, DynamoDB for metadata, Rekognition for AI tagging, Amplify for the frontend, and CloudWatch for monitoring. All services secured with IAM least-privilege roles. Spent the project troubleshooting cross-service integrations and hardening permissions to get everything working as one system.',
+      impact:
+        'Delivered a working live demo integrating 8+ AWS services with zero server management. The most valuable lesson: making cloud services work together as a system — not just individually — is a different skill than knowing each service in isolation.',
+      image: 'smartgallery.PNG',
+      imageAlt: 'SmartGallery AWS Architecture',
       techCategories: [
         {
-          category: 'Frontend',
-          items: ['Astro', 'TypeScript', 'Tailwind CSS'],
+          category: 'AWS Services',
+          items: ['S3', 'Lambda', 'API Gateway', 'Cognito', 'DynamoDB', 'Rekognition', 'Amplify', 'CloudWatch'],
         },
         {
-          category: 'Developer Experience',
-          items: ['Vite', 'ESLint', 'Automated Testing'],
+          category: 'Security',
+          items: ['IAM Least Privilege', 'Cognito Auth', 'Serverless Security'],
         },
       ],
     },
   ],
   projectArchivePage: {
     title: 'All projects',
-    description: 'Project archive: dates, roles, and technologies across representative engagements.',
-    intro: 'A concise archive of engagements and representative work.',
+    description: 'Full archive of projects, labs, and security research.',
+    intro: 'A running record of builds, experiments, and things learned.',
   },
   projectArchive: [
-    { date: '2025', project: 'Design system rollout', role: 'Frontend', techStack: 'Astro, CSS, Storybook' },
-    { date: '2024', project: 'Checkout reliability', role: 'Full-stack', techStack: 'TypeScript, Postgres, Redis' },
-    { date: '2024', project: 'Auth hardening', role: 'Backend', techStack: 'OAuth2, JWT, rate limits' },
-    { date: '2023', project: 'Analytics pipeline', role: 'Data', techStack: 'SQL, dbt, warehouse' },
-    { date: '2023', project: 'Mobile web refresh', role: 'Frontend', techStack: 'HTML, CSS, a11y audits' },
+    { date: '2026', project: 'Agentic AI Threat Hunting Simulation', role: 'Security / AI', techStack: 'Python, OpenAI API, Agentic AI' },
+    { date: '2026', project: 'SmartGallery — Serverless AI Image Platform', role: 'DevOps PM', techStack: 'AWS Lambda, S3, Rekognition, Cognito, DynamoDB, Amplify' },
+    { date: '2025', project: 'Enterprise IAM Demo — Okta + AWS Federation', role: 'Solo Build', techStack: 'Okta, OIDC, SAML, PKCE, JWT, Node.js, AWS IAM' },
   ],
   contact: {
-    email: 'hello@example.com',
-    github: 'https://github.com/',
-    linkedin: 'https://www.linkedin.com/',
+    email: 'tcs23d@fsu.edu',
+    github: 'https://github.com/tylersibley',
+    linkedin: 'https://www.linkedin.com/in/tylersibley/',
   },
 } as const;
 

@@ -7,24 +7,26 @@ interface Props {
 }
 
 const { project, imageSrc: imageOverride } = Astro.props;
-
-const techCategories = project.techCategories;
-const imageSrc = imageOverride ?? (project.image ? (project.image.startsWith('/') ? project.image : `/${project.image}`) : undefined);
+const p = project as any;
+const techCategories = p.techCategories;
+const imageSrc = imageOverride ?? (p.image ? (p.image.startsWith('/') ? p.image : `/${p.image}`) : undefined);
+const demoLink = p.link as string | undefined;
+const githubLink = p.github as string | undefined;
 ---
 
 <article class="scroll-stat panel-card group space-y-6">
   <header>
     <h3 class="text-2xl font-semibold text-slate">
-      {project.title}
+      {p.title}
     </h3>
-    {project.period && <p class="mt-1 font-mono text-sm text-accent">{project.period}</p>}
+    {p.period && <p class="mt-1 font-mono text-sm text-accent">{p.period}</p>}
   </header>
 
   {imageSrc && (
     <div class="w-full max-w-3xl overflow-hidden rounded-xl">
       <img
         src={imageSrc}
-        alt={project.imageAlt ?? ''}
+        alt={p.imageAlt ?? ''}
         class="w-full h-56 object-cover"
         loading="lazy"
         decoding="async"
@@ -33,18 +35,17 @@ const imageSrc = imageOverride ?? (project.image ? (project.image.startsWith('/'
   )}
 
   <div class="space-y-4">
-    <p class="body-copy">{project.summary}</p>
-
-    {project.solution && (
+    <p class="body-copy">{p.summary}</p>
+    {p.solution && (
       <div>
         <dt class="text-xs uppercase tracking-wider text-accent">Solution</dt>
-        <dd class="mt-1.5 text-slate">{project.solution}</dd>
+        <dd class="mt-1.5 text-slate">{p.solution}</dd>
       </div>
     )}
-    {project.impact && (
+    {p.impact && (
       <div>
         <dt class="text-xs uppercase tracking-wider text-accent">Impact</dt>
-        <dd class="mt-1.5 text-slate">{project.impact}</dd>
+        <dd class="mt-1.5 text-slate">{p.impact}</dd>
       </div>
     )}
   </div>
@@ -66,6 +67,37 @@ const imageSrc = imageOverride ?? (project.image ? (project.image.startsWith('/'
       ))}
     </div>
   </div>
+
+  {(demoLink || githubLink) && (
+    <div class="flex flex-wrap gap-3 pt-2">
+      {demoLink && (
+        <a
+          href={demoLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-lg border border-accent px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-bg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          Live Demo
+        </a>
+      )}
+      {githubLink && githubLink !== '' && (
+        <a
+          href={githubLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-lg border border-slate-light px-4 py-2 text-sm font-medium text-slate-light transition hover:border-slate hover:text-slate"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          GitHub
+        </a>
+      )}
+    </div>
+  )}
 </article>
 
 <style>
@@ -74,7 +106,6 @@ const imageSrc = imageOverride ?? (project.image ? (project.image.startsWith('/'
     transform: translateY(20px) scale(0.95);
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
   .scroll-stat.reveal {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -84,27 +115,19 @@ const imageSrc = imageOverride ?? (project.image ? (project.image.startsWith('/'
 <script>
   function revealCards() {
     const cards = document.querySelectorAll('.scroll-stat');
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = Array.from(cards).indexOf(entry.target);
           setTimeout(() => {
             entry.target.classList.add('reveal');
-          }, (index % 3) * 150); 
-          
+          }, (index % 3) * 150);
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -10px 0px'
-    });
-
+    }, { threshold: 0.15, rootMargin: '0px 0px -10px 0px' });
     cards.forEach(card => observer.observe(card));
   }
-
   revealCards();
-  
   document.addEventListener('astro:after-swap', revealCards);
 </script>
