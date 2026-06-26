@@ -16,13 +16,13 @@ export const site = {
   about: {
     paragraphs: [
       'Senior IT student at Florida State University and current Okta Customer Success Intern. I build real IAM systems with live Okta federation, serverless cloud architectures on AWS, and AI-powered security tooling. I care about systems that are secure by design, not patched after the fact.',
-      'Currently at Okta supporting enterprise customers with SSO, MFA, and lifecycle management implementations. Co-Captain of the FSU AWS Cloud Club. CompTIA Security+, AWS AI Practitioner, and AWS Cloud Practitioner certified.',
+      'Currently at Okta supporting enterprise customers with SSO, MFA, and lifecycle management implementations. Co-Captain of the FSU AWS Cloud Club. Okta Certified Administrator, Okta Certified Professional, CompTIA Security+, AWS AI Practitioner, and AWS Cloud Practitioner certified.',
       {
         heading: 'What I work with',
         bullets: [
           'Identity & Access Management — Okta OIDC/SAML, RBAC, JWT, PKCE, AWS IAM federation',
           'Cloud architecture — AWS serverless (Lambda, S3, API Gateway, DynamoDB, Cognito, Rekognition)',
-          'Security tooling — Python, OpenAI API, agentic AI pipelines, threat hunting automation',
+          'Security tooling — Python, FastAPI, React, scikit-learn, OpenAI API, agentic AI pipelines',
         ],
       },
     ],
@@ -47,7 +47,7 @@ export const site = {
       tech: ['AWS', 'Lambda', 'S3', 'DynamoDB', 'IAM', 'CloudWatch'],
     },
     {
-      period: 'Feb. 2026 – Present',
+      period: 'Feb. 2026 — Present',
       title: 'Co-Captain',
       company: 'AWS Cloud Club at FSU',
       summary:
@@ -57,6 +57,34 @@ export const site = {
     },
   ],
   featuredProjects: [
+    {
+      title: 'Zero Trust Security Dashboard',
+      period: 'Summer 2026',
+      link: 'https://zerotrust.tylersibley.dev',
+      github: 'https://github.com/tylersibley/zero-trust-dashboard',
+      summary:
+        'A full-stack security operations dashboard built on Okta\'s identity platform — real-time threat detection, behavioral analytics, and ML-powered anomaly detection. Live data from a real Okta org.',
+      solution:
+        'Built a FastAPI backend deployed on AWS Lambda that pulls live authentication events from the Okta System Log API, scores user risk in real time, and detects anomalies using an Isolation Forest ML model trained on per-user behavioral baselines (login hours, known IPs, failure rates). The React frontend — deployed on Vercel with a custom domain — includes six pages: Overview, User Drilldown, Live Feed, Risk Simulator, Anomaly Detection, and Analytics. The Risk Simulator lets you input any user and context (IP, country, action) and returns an ALLOW/CHALLENGE/DENY policy decision with full reasoning.',
+      impact:
+        'Fully live at zerotrust.tylersibley.dev with real Okta org data. Backend on AWS Lambda + API Gateway, frontend on Vercel. Demonstrates the full Zero Trust stack — identity telemetry, behavioral baselines, ML anomaly scoring, and adaptive policy simulation — in a single working product.',
+      image: 'zeroTrustDashboard.jpg',
+      imageAlt: 'Zero Trust Security Dashboard — Overview page showing org risk score and at-risk users',
+      techCategories: [
+        {
+          category: 'Backend & ML',
+          items: ['Python', 'FastAPI', 'scikit-learn', 'Isolation Forest', 'AWS Lambda', 'DynamoDB', 'Mangum'],
+        },
+        {
+          category: 'Identity & APIs',
+          items: ['Okta System Log API', 'Okta Users API', 'Event Hooks', 'Zero Trust', 'SSWS Auth'],
+        },
+        {
+          category: 'Frontend & Infra',
+          items: ['React', 'Vite', 'Recharts', 'Vercel', 'API Gateway', 'S3'],
+        },
+      ],
+    },
     {
       title: 'Enterprise IAM Demo — Okta + AWS Federation',
       period: '2025',
@@ -89,7 +117,7 @@ export const site = {
       summary:
         'Full-stack serverless AWS application where users upload images and get AI-generated tags automatically — built across 9 weeks with 35+ contributors in the FSU AWS Cloud Club.',
       solution:
-        'Served as DevOps Project Manager leading a team of 5. Designed the AWS architecture end-to-end: S3 for storage, Lambda for compute, API Gateway for routing, Cognito for auth, DynamoDB for metadata, Rekognition for AI tagging, Amplify for the frontend, and CloudWatch for monitoring. All services secured with IAM least-privilege roles. Spent the project troubleshooting cross-service integrations and hardening permissions to get everything working as one system.',
+        'Served as DevOps Project Manager leading a team of 5. Designed the AWS architecture end-to-end: S3 for storage, Lambda for compute, API Gateway for routing, Cognito for auth, DynamoDB for metadata, Rekognition for AI tagging, Amplify for the frontend, and CloudWatch for monitoring. All services secured with IAM least-privilege roles.',
       impact:
         'Delivered a working live demo integrating 8+ AWS services with zero server management. The most valuable lesson: making cloud services work together as a system — not just individually — is a different skill than knowing each service in isolation.',
       image: 'smartgallery.PNG',
@@ -112,6 +140,8 @@ export const site = {
     intro: 'A running record of builds, experiments, and things learned.',
   },
   projectArchive: [
+    { date: '2026', project: 'Zero Trust Security Dashboard', role: 'Solo Build', techStack: 'Python, FastAPI, React, AWS Lambda, DynamoDB, Okta APIs, scikit-learn' },
+    { date: '2026', project: 'CertIQ — Cybersecurity Certification Intelligence', role: 'Solo Build', techStack: 'JavaScript, JSearch API, 914 job postings, 32 certs analyzed' },
     { date: '2026', project: 'Agentic AI Threat Hunting Simulation', role: 'Security / AI', techStack: 'Python, OpenAI API, Agentic AI' },
     { date: '2026', project: 'SmartGallery — Serverless AI Image Platform', role: 'DevOps PM', techStack: 'AWS Lambda, S3, Rekognition, Cognito, DynamoDB, Amplify' },
     { date: '2025', project: 'Enterprise IAM Demo — Okta + AWS Federation', role: 'Solo Build', techStack: 'Okta, OIDC, SAML, PKCE, JWT, Node.js, AWS IAM' },
